@@ -1,56 +1,37 @@
-//Global array
-let students = [];
+function runApp() {
 
-// Function to add student
-function addStudent(name, marks) {
+  // Array
+  let nums = [10, 20];
 
-    students.push({
-        studentName: name,
-        studentMarks: marks
+  // Spread operator
+  let newNums = [...nums, 30];
+
+  console.log("New Array:", newNums);
+
+  // Callback function
+  function process(data, callback) {
+    callback(data);
+  }
+
+  let result = "";
+
+  process(newNums, function(data) {
+
+    data.forEach((num, index) => {
+
+      // Destructuring (array)
+      let [value] = [num];
+
+      // Template literal
+      let text = `${index + 1} value is ${value}`;
+
+      console.log(text);
+
+      result += <p>${text}</p>;
     });
 
+  });
+
+  document.getElementById("output").innerHTML = result;
 }
-
-// Students add
-addStudent("Madhumitha", [80,75,90]);
-addStudent("Arun", [60,55,70]);
-addStudent("Priya", [40,45,50]);
-
-// Function to check result
-function checkResult(){
-
-let resultText = "";
-
-for(let i=0;i<students.length;i++){
-
-let student = students[i];
-let marks = student.studentMarks;
-
-let total = 0;
-
-for(let j=0;j<marks.length;j++){
-total += marks[j];
-}
-
-let average = total / marks.length;
-
-let result;
-
-if(average >= 50){
-result = "PASS";
-}
-else{
-result = "FAIL";
-}
-
-resultText += "Name: " + student.studentName + "<br>";
-resultText += "Average: " + average + "<br>";
-resultText += "Result: " + result + "<br>";
-resultText += "-------------------<br>";
-
-}
-
-// Show in live page
-document.getElementById("output").innerHTML = resultText;
-
-}
+     

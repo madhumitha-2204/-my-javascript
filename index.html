@@ -1,18 +1,51 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Student Result Checker</title>
+  <title>Working App</title>
 </head>
-
 <body>
 
-<h1>Student Result Checker</h1>
+  <h2>Click Button 👇</h2>
+  <button onclick="runApp()">Click Me</button>
 
-<button onclick="checkResult()">Check Result</button>
+  <div id="output"></div>
 
-<div id="output"></div>
+  <script>
+    function runApp() {
 
-<script src="script.js"></script>
+      let nums = [10, 20];
+
+      // Spread
+      let newNums = [...nums, 30];
+
+      console.log("Array:", newNums);
+
+      function process(data, callback) {
+        callback(data);
+      }
+
+      let result = "";
+
+      process(newNums, function(data) {
+
+        data.forEach((num, index) => {
+
+          // Destructuring
+          let [value] = [num];
+
+          // Template literal
+          let text = `${index + 1} value is ${value}`;
+
+          console.log(text);
+
+          result += "<p>" + text + "</p>";
+        });
+
+      });
+
+      document.getElementById("output").innerHTML = result;
+    }
+  </script>
 
 </body>
 </html>
